@@ -552,9 +552,13 @@ definitions:
     type: object
     required:
       - nome
+      - data_nascimento
     properties:
       nome:
         type: string
+      data_nascimento:
+        type: string
+        format: date
 
   AulaRequest:
     type: object

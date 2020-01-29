@@ -20,7 +20,7 @@ module.exports = {
 // Controller methods
 function listar(request, response) {
     (async () => {
-        let filtros = resgatar_filtro(request);
+        let filtros = resgatar_filtros(request);
         return Aluno.findAll(filtros)
             .then(
                 registros => helpers.response_array_list(registros, response)
@@ -97,7 +97,7 @@ function remover(request, response) {
 }
 
 // Controller support methods
-function resgatar_filtro(request) {
+function resgatar_filtros(request) {
     let filtros = helpers.init_search_filter();
 
     // Ordenação da listagem

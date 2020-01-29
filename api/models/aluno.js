@@ -14,6 +14,10 @@ module.exports = function(sequelize, DataTypes) {
             nome: {
                 type: DataTypes.STRING,
                 allowNull: false            
+            },
+            data_nascimento:{
+                type: DataTypes.DATE,
+                allowNull: false
             }
         },
         {
@@ -22,21 +26,6 @@ module.exports = function(sequelize, DataTypes) {
             timestamps: true
         }
     );
-
-    // Aluno.associate = function(models) {
-    //     Aluno.belongsTo(
-    //         models.Curso_aluno,
-    //         {
-    //             as: 'curso_aluno',
-    //             onUpdate: 'CASCADE',
-    //             onDelete: 'CASCADE',
-    //             foreignKey: { 
-    //                 allowNull: false
-    //             }
-
-    //         }
-    //     )
-    // }
 
     Aluno.load_scopes = function(models){
         Aluno.addScope(
