@@ -1,4 +1,5 @@
 'use strict';
+// Entity model Lesson
 
 // Model interface
 module.exports = function(sequelize, DataTypes) {
@@ -8,12 +9,16 @@ module.exports = function(sequelize, DataTypes) {
             id: {
                 type: DataTypes.INTEGER, 
                 primaryKey: true, 
-                autoIncremet: true,
+                autoIncrement: true,
                 allowNull: false 
             },
-            nome: {
-                type: DataTypes.STRING,
-                allowNull: false            
+            titulo: { 
+                type: DataTypes.STRING, 
+                allowNull: false 
+            },
+            conteudo: {
+                type: DataTypes.TEXT,
+                allowNull: false
             }
         },
         {
@@ -33,21 +38,15 @@ module.exports = function(sequelize, DataTypes) {
                 foreignKey: { 
                     allowNull: false
                 }
-
             }
         )
     }
 
-    Aula.load_scopes = function(models){
+    Aula.load_scopes = function(models) {
         Aula.addScope(
             'complete',
             {
-                include: [
-                    { 
-                        associate: 'curso', 
-                        required: false 
-                    }
-                ]
+                include: [{ association: 'curso', required: false }]
             }
         );
     }

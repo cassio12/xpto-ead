@@ -1,4 +1,5 @@
 'use strict';
+// Student Entity Model
 
 // Model interface
 module.exports = function(sequelize, DataTypes) {

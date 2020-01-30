@@ -5,9 +5,20 @@ module.exports = function(sequelize, DataTypes) {
     var Curso = sequelize.define(
         'Curso',
         {
-            id: { type: DataTypes.BIGINT, primaryKey: true, autoIncrement: true, allowNull: false },
-            titulo: { type: DataTypes.STRING, allowNull: false },
-            descricao: { type: DataTypes.TEXT, allowNull: false },
+            id: { 
+                type: DataTypes.BIGINT, 
+                primaryKey: true, 
+                autoIncrement: true, 
+                allowNull: false 
+            },
+            titulo: { 
+                type: DataTypes.STRING, 
+                allowNull: false 
+            },
+            descricao: { 
+                type: DataTypes.TEXT, 
+                allowNull: false 
+            },
         },
         {
             schema: 'public',

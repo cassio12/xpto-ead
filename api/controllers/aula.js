@@ -20,15 +20,11 @@ module.exports = {
 // Controller methods
 function listar(request, response) {
     (async () => {
-        let filtros = resgatar_filtro(request);
-        return Aula.findAll(filtros)
-            .then(
-                registros => helpers.response_array_list(registros, response)
-            )
-            .catch(
-                error => error_handler.controller(error, response)
-            )
-    })
+      var filtros = resgatar_filtros(request);
+      return Aula.scope('complete').findAll(filtros)
+        .then(registros => helpers.response_array_list(registros, response))
+        .catch(error => error_handler.controller(error, response));
+    })();
 }
 
 function exibir(request, response) {
@@ -97,11 +93,11 @@ function remover(request, response) {
 }
 
 // Controller support methods
-function resgatar_filtro(request) {
+function resgatar_filtros(request) {
     let filtros = helpers.init_search_filter();
-
+  
     // Ordenação da listagem
-    filtro.order = [['nome', 'ASC']];
-
+    filtros.order = [['titulo', 'ASC']];
+  
     return filtros;
-}
+  }
