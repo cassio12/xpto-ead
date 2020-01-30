@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
             id: {
                 type: DataTypes.INTEGER, 
                 primaryKey: true, 
-                autoIncremet: true,
+                autoIncrement: true,
                 allowNull: false 
             },
             nome: {
@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false            
             },
             data_nascimento:{
-                type: DataTypes.DATE,
+                type: DataTypes.DATEONLY,
                 allowNull: false
             }
         },
@@ -26,15 +26,6 @@ module.exports = function(sequelize, DataTypes) {
             timestamps: true
         }
     );
-
-    Aluno.load_scopes = function(models){
-        Aluno.addScope(
-            'complete',
-            {
-                include: [{ associate: 'curso_aluno', required: false }]
-            }
-        );
-    }
 
     return Aluno;
 }

@@ -20,7 +20,7 @@ module.exports = {
 // Controller methods
 function listar(request, response) {
     (async () => {
-        let filtros = resgatar_filtros(request);
+        var filtros = resgatar_filtros(request);
         return Aluno.findAll(filtros)
             .then(
                 registros => helpers.response_array_list(registros, response)
@@ -28,7 +28,8 @@ function listar(request, response) {
             .catch(
                 error => error_handler.controller(error, response)
             )
-    })
+    })();
+
 }
 
 function exibir(request, response) {
@@ -49,6 +50,7 @@ function exibir(request, response) {
 function inserir(request, response) {
     (async () => {
         let body = helpers.get_request_parameter(request, 'body');
+
         return Aluno.create(body)
             .then(
                 registro => response.status(201).send(registro)
@@ -101,7 +103,7 @@ function resgatar_filtros(request) {
     let filtros = helpers.init_search_filter();
 
     // Ordenação da listagem
-    filtro.order = [['nome', 'ASC']];
+    filtros.order = [['nome', 'ASC']];
 
     return filtros;
 }
